@@ -2,10 +2,6 @@
 
 namespace PasswordGeneratorMozg
 {
-    class Random
-    {
-        // всё хуйня, посмотреть clss Random для логики
-    }
     class Mozg
     {
         static void Main(string[] args)
