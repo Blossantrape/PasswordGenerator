@@ -2,18 +2,17 @@
 
 namespace PasswordGeneratorMozg
 {
+    class Random
+    {
+        // всё хуйня, посмотреть clss Random для логики
+    }
     class Mozg
     {
         static void Main(string[] args)
         {
             // Дописать все возможные варианты
 
-            Console.WriteLine("Сколько символов в пароле?");
-            string? inputSumSymbols = Console.ReadLine();
-            int sumSymbols = Convert.ToInt32(inputSumSymbols); // Convert string to int
-
-            Console.WriteLine("Использовать вехний и нижний, или только верхний или нижний регистр символом? \nUL/U/L");
-            string? inputRegistr = Console.ReadLine();
+           
 
             // Пременные для сравнения registr
             string registrUL = "UL";
@@ -23,11 +22,71 @@ namespace PasswordGeneratorMozg
             string registrL = "L";
             string registrl = "l";
 
+            // Переменные для сравнния number
+            string numberY = "Y";
+            string numbery = "y";
+            string numberN = "N";
+            string numbern = "n";
+
+            // Сымволы для пароля
+            string abc = "abcdefghijklmnopqrstuwxyz";
+            string ABC = "ABCDEFGHIJKLMNOPQRSTUWXYZ";
+            string numbers = "0123456789";
+            string symbols = "!@#$%^&*()";
+
+            // Пременные для сравнения specSymbol
+            string specSymbolY = "Y";
+            string specSymboly = "y";
+            string specSymbolN = "N";
+            string specSymboln = "n";
+
+            Console.WriteLine("Сколько символов в пароле?");
+            string? inputSumSymbols = Console.ReadLine();
+            int sumSymbols = Convert.ToInt32(inputSumSymbols); // Convert string to int
+
+            Console.WriteLine("Использовать вехний и нижний, или только верхний или нижний регистр символом? \nUL/U/L");
+            string? inputRegistr = Console.ReadLine();
 
             if ((registrUL == inputRegistr) | (registrul == inputRegistr))
             {
-                //bool registerY = Convert.ToBoolean(inputRegistr); // Convert string to bool                
-                Console.WriteLine("Верхний и нижний регистр");
+                //bool registerY = Convert.ToBoolean(inputRegistr); // Convert string to bool
+                Console.WriteLine("Использовать цифры? \nY/N");
+                string? inputNumber = Console.ReadLine();
+
+                if((numberY == inputNumber) | (numbery == inputNumber))
+                {
+                    Console.WriteLine("Использовать цифры");
+                    Console.WriteLine("Использовать специальные символы? \nY/N");
+                    string? inputSpecSymbol = Console.ReadLine();
+
+                    if ((specSymbolY == inputSpecSymbol) | (specSymboly == inputSpecSymbol))
+                    {
+                        Console.WriteLine("Со спецециальными символами");
+                        Console.WriteLine("Верхний и нижний регистр");
+                        string passwordULNS = string.Concat(abc, ABC, numbers, symbols);
+
+                        Console.WriteLine(passwordULNS);
+                    }
+                    else if ((specSymbolN == inputSpecSymbol) | (specSymboln == inputSpecSymbol))
+                    {
+                        Console.WriteLine("Без специальных символов");
+                    }
+                    else
+                    {
+                        Console.WriteLine("ERROR"); // Ошибка
+                    }
+                }
+                else if((numberN == inputNumber) | (numbern == inputNumber))
+                {
+                    Console.WriteLine("Не использовать цифры");
+                }
+                else
+                {
+                    Console.WriteLine("ERROR"); // Ошибка
+                }
+
+                
+
             }
             else if ((registrU == inputRegistr) | (registru == inputRegistr) | (registrL == inputRegistr) | (registrl == inputRegistr))
             {
@@ -35,10 +94,42 @@ namespace PasswordGeneratorMozg
                 if ((registrU == inputRegistr) | (registru == inputRegistr))
                 {
                     Console.WriteLine("Верхний регистр");
+
+                    Console.WriteLine("Использовать специальные символы? \nY/N");
+                    string? inputSpecSymbol = Console.ReadLine();
+
+                    if ((specSymbolY == inputSpecSymbol) | (specSymboly == inputSpecSymbol))
+                    {
+                        Console.WriteLine("Со спецециальными символами");
+                    }
+                    else if ((specSymbolN == inputSpecSymbol) | (specSymboln == inputSpecSymbol))
+                    {
+                        Console.WriteLine("Без специальных символов");
+                    }
+                    else
+                    {
+                        Console.WriteLine("ERROR"); // Ошибка
+                    }
                 }
                 else if ((registrL == inputRegistr) | (registrl == inputRegistr))
                 {
                     Console.WriteLine("Нижний регистр");
+
+                    Console.WriteLine("Использовать специальные символы? \nY/N");
+                    string? inputSpecSymbol = Console.ReadLine();
+
+                    if ((specSymbolY == inputSpecSymbol) | (specSymboly == inputSpecSymbol))
+                    {
+                        Console.WriteLine("Со спецециальными символами");
+                    }
+                    else if ((specSymbolN == inputSpecSymbol) | (specSymboln == inputSpecSymbol))
+                    {
+                        Console.WriteLine("Без специальных символов");
+                    }
+                    else
+                    {
+                        Console.WriteLine("ERROR"); // Ошибка
+                    }
                 }
                 else
                 {
@@ -51,58 +142,25 @@ namespace PasswordGeneratorMozg
             }
 
 
-            Console.WriteLine("Использовать специальные символы? \nY/N");
-            string? inputSpecSymbol = Console.ReadLine();
+            
+            
+            
 
-            // Пременные для сравнения specSymbol
-            string specSymbolY = "Y";
-            string specSymboly = "y";
-            string specSymbolN = "N";
-            string specSymboln = "n";
-
-            if ((specSymbolY == inputSpecSymbol) | (specSymboly == inputSpecSymbol))
-            {                
-                Console.WriteLine("Со спецециальными символами");
-            }
-            else if ((specSymbolN == inputSpecSymbol) | (specSymboln == inputSpecSymbol))
-            {
-                Console.WriteLine("Без специальных символов");
-            }
-            else
-            {
-                Console.WriteLine("ERROR"); // Ошибка
-            }
-
-            //bool y = true;
-            //bool n = false;
-
-            // Метод регистра
-            //void Register()
+            // Тут где-то логика будет
+            //if(UL == 1)
             //{
-            //    Console.WriteLine();
+            //    string passwordULNS = string.Concat(abc, ABC, numbers, symbols);
+            //    Console.WriteLine("logIf");
+            //    Console.WriteLine(passwordULNS);
             //}
-
-
-            //if(y == n)
+            //else if()
             //{
-            //    Console.WriteLine("if");
-            //}
-            //else if(y == n)
-            //{
-            //    Console.WriteLine("else if");
+            //    Console.WriteLine("logElseIf");
             //}
             //else
             //{
-            //    Console.WriteLine("else");
+            //    Console.WriteLine("logElse");
             //}
-            // Сымволы для пароля
-            string abc = "abcdefghijklmnopqrstuwxyz";
-            string ABC = "ABCDEFGHIJKLMNOPQRSTUWXYZ";
-            string numbers = "0123456789";
-            string symbols = "!@#$%^&*()";
-
-            // Тут где-то логика будет
-
 
         }
           
