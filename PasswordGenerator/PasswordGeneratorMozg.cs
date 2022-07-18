@@ -24,7 +24,7 @@ namespace PasswordGeneratorMozg
             string numberN = "N";
             string numbern = "n";
 
-            // Сымволы для пароля
+            // Символы для пароля
             string abc = "abcdefghijklmnopqrstuwxyz";
             string ABC = "ABCDEFGHIJKLMNOPQRSTUWXYZ";
             string numbers = "0123456789";
@@ -60,6 +60,7 @@ namespace PasswordGeneratorMozg
                         Console.WriteLine("Со спецециальными символами");
                         Console.WriteLine("Верхний и нижний регистр");
                         string passwordULNS = string.Concat(abc, ABC, numbers, symbols);
+
 
                         Console.WriteLine(passwordULNS);
                     }
