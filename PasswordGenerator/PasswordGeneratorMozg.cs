@@ -8,8 +8,6 @@ namespace PasswordGeneratorMozg
         {
             // Дописать все возможные варианты
 
-           
-
             // Пременные для сравнения registr
             string registrUL = "UL";
             string registrul = "ul";
@@ -40,6 +38,17 @@ namespace PasswordGeneratorMozg
             string? inputSumSymbols = Console.ReadLine();
             int sumSymbols = Convert.ToInt32(inputSumSymbols); // Convert string to int
 
+            List<string> listSumPasswordSymbols = new List<string>();
+
+            
+
+
+
+            for (int i = 0; i == sumSymbols; i++)
+            {
+
+            }
+
             Console.WriteLine("Использовать вехний и нижний, или только верхний или нижний регистр символом? \nUL/U/L");
             string? inputRegistr = Console.ReadLine();
 
@@ -57,12 +66,37 @@ namespace PasswordGeneratorMozg
 
                     if ((specSymbolY == inputSpecSymbol) | (specSymboly == inputSpecSymbol))
                     {
-                        Console.WriteLine("Со спецециальными символами");
+                        //Console.WriteLine("Со спецециальными символами");
                         Console.WriteLine("Верхний и нижний регистр");
-                        string passwordULNS = string.Concat(abc, ABC, numbers, symbols);
+                        //string passwordULNS = string.Concat(abc, ABC, numbers, symbols);
 
+                        Random randomnPassword = new Random();
 
-                        Console.WriteLine(passwordULNS);
+                        for (int i = 0; i < sumSymbols; i++)
+                        {                            
+                            int value = randomnPassword.Next();
+                            listSumPasswordSymbols.Add(ABC);
+                            listSumPasswordSymbols.Add(value.ToString());
+
+                            // Ниже перебор списка
+
+                            //Console.WriteLine(value.ToString());
+
+                            //char valueS = (char)randomnPassword.Next(33, 125);
+
+                           // listSumPasswordSymbols[i] += valueS;
+
+                            Console.WriteLine($"Password №:{i} -> {listSumPasswordSymbols[i]}");
+
+                            //if (specSymbolY)
+                            //{
+                            //    char valueS = (char)randomnPassword.Next(33, 125);
+
+                            //}
+                        }
+
+                        //Console.WriteLine("\n");
+                        
                     }
                     else if ((specSymbolN == inputSpecSymbol) | (specSymboln == inputSpecSymbol))
                     {
