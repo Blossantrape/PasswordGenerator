@@ -28,6 +28,8 @@ namespace PasswordGeneratorMozg
             string numbers = "0123456789";
             string symbols = "!@#$%^&*()";
 
+            string abcABCNumbersSymbols = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789!@#$%^&*()";
+
             // Пременные для сравнения specSymbol
             string specSymbolY = "Y";
             string specSymboly = "y";
@@ -75,8 +77,22 @@ namespace PasswordGeneratorMozg
                         for (int i = 0; i < sumSymbols; i++)
                         {                            
                             int value = randomnPassword.Next();
-                            listSumPasswordSymbols.Add(ABC);
-                            listSumPasswordSymbols.Add(value.ToString());
+                            listSumPasswordSymbols.Add(abcABCNumbersSymbols);
+                            
+                            for (int j = listSumPasswordSymbols.Count - 1; j >= 1; j--)
+                            {
+                                int g = randomnPassword.Next(j + 1);
+
+                                string tmp = listSumPasswordSymbols[g];
+                                listSumPasswordSymbols[g] = listSumPasswordSymbols[j];
+                                listSumPasswordSymbols[j] = tmp;
+
+                                Console.WriteLine($"Password №:{j} -> {tmp}");
+
+                            }
+
+                            //listSumPasswordSymbols.Add(ABC);
+                            //listSumPasswordSymbols.Add(value.ToString());
 
                             // Ниже перебор списка
 
@@ -84,9 +100,9 @@ namespace PasswordGeneratorMozg
 
                             //char valueS = (char)randomnPassword.Next(33, 125);
 
-                           // listSumPasswordSymbols[i] += valueS;
-
-                            Console.WriteLine($"Password №:{i} -> {listSumPasswordSymbols[i]}");
+                            // listSumPasswordSymbols[i] += valueS;
+                            //Console.WriteLine($"Password №:{i} -> {tmp}");
+                            //Console.WriteLine($"Password №:{i} -> {listSumPasswordSymbols[i]}");
 
                             //if (specSymbolY)
                             //{
