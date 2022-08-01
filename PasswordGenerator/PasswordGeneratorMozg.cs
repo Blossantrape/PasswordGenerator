@@ -40,19 +40,20 @@ namespace PasswordGeneratorMozg
             string? inputSumSymbols = Console.ReadLine();
             int sumSymbols = Convert.ToInt32(inputSumSymbols); // Convert string to int
 
-            List<string> listSumPasswordSymbols = new List<string>();
+            Console.WriteLine("Сколько паролей?");
+            string? inputSumPassword = Console.ReadLine();
+            int sumPassword = Convert.ToInt32(inputSumPassword); // Convert string to int
 
-            
+            List<string> listSumPasswordSymbols = new List<string>(); // Основноый список
+            List<string> listSumPassword = new List<string>(); // Для кол-ва
 
+            Random randomnPassword = new Random();
 
-
-            for (int i = 0; i == sumSymbols; i++)
-            {
-
-            }
+            string[] strings = new string[sumSymbols]; // Основной массив
 
             Console.WriteLine("Использовать вехний и нижний, или только верхний или нижний регистр символом? \nUL/U/L");
             string? inputRegistr = Console.ReadLine();
+
 
             if ((registrUL == inputRegistr) | (registrul == inputRegistr))
             {
@@ -60,9 +61,9 @@ namespace PasswordGeneratorMozg
                 Console.WriteLine("Использовать цифры? \nY/N");
                 string? inputNumber = Console.ReadLine();
 
-                if((numberY == inputNumber) | (numbery == inputNumber))
+                if ((numberY == inputNumber) | (numbery == inputNumber))
                 {
-                    Console.WriteLine("Использовать цифры");
+                    //Console.WriteLine("Использовать цифры");
                     Console.WriteLine("Использовать специальные символы? \nY/N");
                     string? inputSpecSymbol = Console.ReadLine();
 
@@ -72,47 +73,70 @@ namespace PasswordGeneratorMozg
                         Console.WriteLine("Верхний и нижний регистр");
                         //string passwordULNS = string.Concat(abc, ABC, numbers, symbols);
 
-                        Random randomnPassword = new Random();
-
-                        for (int i = 0; i < sumSymbols; i++)
-                        {                            
-                            int value = randomnPassword.Next();
-                            listSumPasswordSymbols.Add(abcABCNumbersSymbols);
-                            
-                            for (int j = listSumPasswordSymbols.Count - 1; j >= 1; j--)
+                        for (int b = 0; b >= sumPassword; b++)
+                        {
+                            // Основная логика
+                            for (int i = 0; i<sumSymbols; i++)
                             {
-                                int g = randomnPassword.Next(j + 1);
+                                int value = randomnPassword.Next(0, 9);
+                                string valueString = Convert.ToString(value);
+                                char valueS = (char)randomnPassword.Next(33, 125);
+                                if (valueS == '\\' || valueS == '/')
+                                {
+                                    valueS = (char)randomnPassword.Next(33, 91);
+                                    //Console.WriteLine($"IFPassword №:{i} -> {valueS}");
+                                    valueS.ToString();
+                                    listSumPasswordSymbols.Add(valueS.ToString());
+                                }
+                                else
+                                {
+                                    //Console.WriteLine($"ELSEPassword №:{i} -> {valueS}");
 
-                                string tmp = listSumPasswordSymbols[g];
-                                listSumPasswordSymbols[g] = listSumPasswordSymbols[j];
-                                listSumPasswordSymbols[j] = tmp;
+                                    // Копирует в список
+                                    listSumPasswordSymbols.Add(valueS.ToString());
+                                }
 
-                                Console.WriteLine($"Password №:{j} -> {tmp}");
-
+                                // Копирует список в массив
+                                listSumPasswordSymbols.CopyTo(strings);
                             }
 
-                            //listSumPasswordSymbols.Add(ABC);
-                            //listSumPasswordSymbols.Add(value.ToString());
-
-                            // Ниже перебор списка
-
-                            //Console.WriteLine(value.ToString());
-
-                            //char valueS = (char)randomnPassword.Next(33, 125);
-
-                            // listSumPasswordSymbols[i] += valueS;
-                            //Console.WriteLine($"Password №:{i} -> {tmp}");
-                            //Console.WriteLine($"Password №:{i} -> {listSumPasswordSymbols[i]}");
-
-                            //if (specSymbolY)
+                            // проверка списка
+                            //foreach (string listSumPasswordSymbolsS in listSumPasswordSymbols)
                             //{
-                            //    char valueS = (char)randomnPassword.Next(33, 125);
-
+                            //    Console.WriteLine($"Symbol: {listSumPasswordSymbolsS}");
                             //}
-                        }
 
-                        //Console.WriteLine("\n");
-                        
+                            listSumPasswordSymbols.Clear(); // clear список
+
+                            // добавить элементы из массива в список
+                            listSumPasswordSymbols.AddRange(strings);
+
+                            Console.ForegroundColor = ConsoleColor.Magenta; // Цвет текста в консоли
+                            Console.Write("\nPassword: ");
+                            Console.ResetColor(); // Вернуть цвет в стандартный
+
+                            // Вывод пароля
+                            foreach (string listSumPasswordSymbolsS1 in listSumPasswordSymbols)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.Write(listSumPasswordSymbolsS1);
+                                Console.ResetColor();
+                                listSumPassword.Add(listSumPasswordSymbolsS1);
+                            }
+
+
+                            Console.ForegroundColor = ConsoleColor.White; // Цвет текста в консоли
+                            Console.Write("\nPasswordSSS: ");
+                            Console.ResetColor(); // Вернуть цвет в стандартный
+
+                            // Вывод пароля
+                            foreach (string listSumPasswordSymbolsS2 in listSumPassword)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.Write(listSumPasswordSymbolsS2);
+                                Console.ResetColor();
+                            }
+                        }
                     }
                     else if ((specSymbolN == inputSpecSymbol) | (specSymboln == inputSpecSymbol))
                     {
@@ -123,16 +147,85 @@ namespace PasswordGeneratorMozg
                         Console.WriteLine("ERROR"); // Ошибка
                     }
                 }
-                else if((numberN == inputNumber) | (numbern == inputNumber))
+                else if ((numberN == inputNumber) | (numbern == inputNumber))
                 {
                     Console.WriteLine("Не использовать цифры");
+
+                    //Console.WriteLine("Использовать цифры");
+                    Console.WriteLine("Использовать специальные символы? \nY/N");
+                    string? inputSpecSymbol = Console.ReadLine();
+
+                    if ((specSymbolY == inputSpecSymbol) | (specSymboly == inputSpecSymbol))
+                    {
+                        //Console.WriteLine("Со спецециальными символами");
+                        Console.WriteLine("Верхний и нижний регистр");
+                        //string passwordULNS = string.Concat(abc, ABC, numbers, symbols);
+
+                        // Основная логика
+                        for (int i = 0; i<sumSymbols; i++)
+                        {
+                            //int value = randomnPassword.Next(0, 9);
+                            //string valueString = Convert.ToString(value);
+                            char valueS = (char)randomnPassword.Next(47, 125);
+                            if (valueS == '\\' || valueS == '/')
+                            {
+                                valueS = (char)randomnPassword.Next(47, 91);
+                                //Console.WriteLine($"IFPassword №:{i} -> {valueS}");
+                                valueS.ToString();
+                                listSumPasswordSymbols.Add(valueS.ToString());
+                            }
+                            else
+                            {
+                                //Console.WriteLine($"ELSEPassword №:{i} -> {valueS}");
+
+                                // Копирует в список
+                                listSumPasswordSymbols.Add(valueS.ToString());
+                            }
+
+                            // Копирует список в массив
+                            listSumPasswordSymbols.CopyTo(strings);
+                        }
+
+                        // проверка списка
+                        //foreach (string listSumPasswordSymbolsS in listSumPasswordSymbols)
+                        //{
+                        //    Console.WriteLine($"Symbol: {listSumPasswordSymbolsS}");
+                        //}
+
+                        listSumPasswordSymbols.Clear(); // clear список
+
+                        // добавить элементы из массива в список
+                        listSumPasswordSymbols.AddRange(strings);
+
+                        Console.ForegroundColor = ConsoleColor.Magenta; // Цвет текста в консоли
+                        Console.Write("\nPassword: ");
+                        Console.ResetColor(); // Вернуть цвет в стандартный
+
+                        // Вывод пароля
+                        foreach (string listSumPasswordSymbolsS1 in listSumPasswordSymbols)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.Write(listSumPasswordSymbolsS1);
+                            Console.ResetColor();
+                        }
+
+                    }
+                    else if ((specSymbolN == inputSpecSymbol) | (specSymboln == inputSpecSymbol))
+                    {
+                        Console.WriteLine("Без специальных символов");
+                    }
+                    else
+                    {
+                        Console.WriteLine("ERROR"); // Ошибка
+                    }
+
                 }
                 else
                 {
                     Console.WriteLine("ERROR"); // Ошибка
                 }
 
-                
+
 
             }
             else if ((registrU == inputRegistr) | (registru == inputRegistr) | (registrL == inputRegistr) | (registrl == inputRegistr))
@@ -189,9 +282,9 @@ namespace PasswordGeneratorMozg
             }
 
 
-            
-            
-            
+
+
+
 
             // Тут где-то логика будет
             //if(UL == 1)
@@ -209,7 +302,9 @@ namespace PasswordGeneratorMozg
             //    Console.WriteLine("logElse");
             //}
 
+
+
+
         }
-          
-    }
+    }    
 }
