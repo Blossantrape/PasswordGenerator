@@ -8,8 +8,11 @@ namespace PasswordGenerator
 {
     class PGMain
     {
-        //public int QuentityPass = 5;
-        //public int QuentitySymbolsPass = 4;
+
+        readonly public Random randomPassword = new Random();
+
+        public List<string> ListQuantitySymbols = new List<string>(); // Список символов
+        public List<string> ListQuantityPasswords = new List<string>(); // Список паролей
 
         // Дописать все возможные варианты
 
@@ -35,16 +38,21 @@ namespace PasswordGenerator
 
         public static void Setings()
         {
-            Console.WriteLine("Настройки пароля");
-            // настройки пароля
+            PGMozg Full = new PGMozg();
+            PGCondicions Test = new PGCondicions();
+
+            // Опцональность пароля
+            Console.WriteLine("Опцональность пароля");
             string? SetingsPassword = Console.ReadLine();
 
             switch (SetingsPassword)
             {
-                case "1":
-                    Console.WriteLine("Успешно");
+                case "Full":
+                    Full.FullPassword();
+                    //Console.WriteLine("Успешно");
                     break;
                 case "2":
+                    Test.TestPassword();
                     // Действие
                     break;
                 case "3":
@@ -62,9 +70,8 @@ namespace PasswordGenerator
             PGMozg GenPassword = new PGMozg();
             PGMain.Setings();
 
-            //GenPassword.Question1();
-            //GenPassword.Question2();
-            GenPassword.Password();
+            // Из-за него бег с пропаданием символа "P" в Password (у последнего пароля) в консоли
+            Console.ReadKey();
         }
     }
 }

@@ -101,7 +101,7 @@
 //                            }
 
 //                            // проверка списка
-//                            //foreach (string listSumPasswordSymbolsS in listQuantitySymbols)
+//                            //foreach (string listSumPasswordSymbolsS in ListQuantitySymbols)
 //                            //{
 //                            //    Console.WriteLine($"Symbol: {listSumPasswordSymbolsS}");
 //                            //}
@@ -187,7 +187,7 @@
 //                        }
 
 //                        // проверка списка
-//                        //foreach (string listSumPasswordSymbolsS in listQuantitySymbols)
+//                        //foreach (string listSumPasswordSymbolsS in ListQuantitySymbols)
 //                        //{
 //                        //    Console.WriteLine($"Symbol: {listSumPasswordSymbolsS}");
 //                        //}

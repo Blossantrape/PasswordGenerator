@@ -9,23 +9,12 @@ namespace PasswordGenerator
 {
     class PGMozg : PGMain
     {
-        readonly Random randomPassword = new Random();
+        //readonly public Random randomPassword = new Random();
 
-        public void Question1()
-        {
-            Console.WriteLine("Сколько паролей");
+        //public List<string> ListQuantitySymbols = new List<string>(); // Список символов
+        //public List<string> ListQuantityPasswords = new List<string>(); // Список паролей
 
-        }       
-
-        public void Question2()
-        {
-            Console.WriteLine("Сколько символов в пароле");
-        }        
-
-        List<string> listQuantitySymbols = new List<string>(); // Основноый список
-        List<string> ListQuantityPasswords = new List<string>(); // Для кол-ва
-
-        public void Password()
+        public void FullPassword()
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
@@ -35,82 +24,72 @@ namespace PasswordGenerator
             // конвертация string в int
             int QuantitySymbols = int.Parse(Console.ReadLine());
 
-            string[] strings = new string[100]; // Основной массив
+            string[] strings = new string[QuantitySymbols]; // Основной массив
 
+            // Переменная для номера пароля
             int p = 0;
 
-            for (int b = 0; b <= QuantityPassword; b++)
+            // Цикл количества паролей
+            for (int b = 1; b <= QuantityPassword; b++)
             {
-                // Основная логика
+                // Основная логика генерации пароля (FullPassword)
                 for (int i = 0; i < QuantitySymbols; i++)
                 {
+                    // Цифры от 1-9
                     int value = randomPassword.Next(0, 9);
                     string valueString = Convert.ToString(value);
+
+                    // Рандомная генерация символов по таблице ASCII в диапазоне 33 - 125
                     char valueS = (char)randomPassword.Next(33, 125);
+
+                    // Логика замены генерируемых символов из valueS "\\" и "/" на числа таблицы ASCII в диапазоне 33 - 125  
                     if (valueS == '\\' || valueS == '/')
                     {
                         valueS = (char)randomPassword.Next(33, 91);
-                        //Console.WriteLine($"IFPassword №:{i} -> {valueS}");
+                        //Console.WriteLine($"IFPassword №:{i} -> {valueS}"); // Проверка
                         valueS.ToString();
-                        listQuantitySymbols.Add(valueS.ToString());
-                        // QuantitySymbols++;
+
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString());
                     }
+
+                    // Если в генерации не попались символы "\\" и "/"
                     else
                     {
-                        //Console.WriteLine($"ELSEPassword №:{i} -> {valueS}");
+                        //Console.WriteLine($"ELSEPassword №:{i} -> {valueS}"); // Проверка
 
-                        // Копирует в список
-                        listQuantitySymbols.Add(valueS.ToString());
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString());
                     }
 
-                    // Копирует список в массив
-                    listQuantitySymbols.CopyTo(strings);
+                    // Копирует список в массив strings
+                    ListQuantitySymbols.CopyTo(strings);
                 }
 
+                // Переменная для номера пароля
                 p++;
+
                 // проверка списка
-                //foreach (string listSumPasswordSymbolsS in listQuantitySymbols)
+                //foreach (string listSumPasswordSymbolsS in ListQuantitySymbols)
                 //{
                 //    Console.WriteLine($"Symbol: {listSumPasswordSymbolsS}");
                 //}
 
-                //listQuantitySymbols.Clear(); // clear список
-
-                //// добавить элементы из массива в список
-                //listQuantitySymbols.AddRange(strings);
-
-                Console.ForegroundColor = ConsoleColor.Magenta; // Цвет текста в консоли
+                Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
                 Console.Write($"\nPassword {p}: ");
-                Console.ResetColor(); // Вернуть цвет в стандартный
+                Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
 
-                // Вывод пароля
-                foreach (string listSumPasswordSymbolsS1 in listQuantitySymbols)
+                // Вывод пароля и перебор
+                foreach (string listSumPasswordSymbolsS1 in ListQuantitySymbols)
                 {
-                    int numberGarbich1 = 0;
-                    int numberGarbich2 = 1;
-                    int number = numberGarbich1 + numberGarbich2;
-
-
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Изменяет цвет текста в консоли на Yellow
                     Console.Write($"{listSumPasswordSymbolsS1}");
-                    Console.ResetColor();
+                    Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
                     ListQuantityPasswords.Add(listSumPasswordSymbolsS1);
                 }
 
-                listQuantitySymbols.Clear(); // clear список
-
-
-                //Console.ForegroundColor = ConsoleColor.White; // Цвет текста в консоли
-                //Console.Write("\nPasswordSSS: ");
-                //Console.ResetColor(); // Вернуть цвет в стандартный
-
-                //// Вывод пароля
-                //foreach (string listSumPasswordSymbolsS2 in ListQuantityPasswords)
-                //{
-                //    Console.ForegroundColor = ConsoleColor.Cyan;
-                //    Console.Write(listSumPasswordSymbolsS2);
-                //    Console.ResetColor();
-                //}
+                // Очистка списка
+                ListQuantitySymbols.Clear(); 
             }
         }
     }
