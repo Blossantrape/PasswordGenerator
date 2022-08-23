@@ -20,8 +20,6 @@ namespace PasswordGenerator
             // конвертация string в int
             int QuantitySymbols = int.Parse(Console.ReadLine());
 
-            string[] strings = new string[QuantitySymbols]; // Основной массив
-
             // Переменная для номера пароля
             int p = 0;
 
@@ -57,9 +55,6 @@ namespace PasswordGenerator
                         // Добавление символов в список ListQuantitySymbols с конвертацией
                         ListQuantitySymbols.Add(valueS.ToString());
                     }
-
-                    // Копирует список в массив strings
-                    ListQuantitySymbols.CopyTo(strings);
                 }
 
                 // Переменная для номера пароля
@@ -81,7 +76,6 @@ namespace PasswordGenerator
                     Console.ForegroundColor = ConsoleColor.Yellow; // Изменяет цвет текста в консоли на Yellow
                     Console.Write($"{listSumPasswordSymbolsS1}");
                     Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
-                    ListQuantityPasswords.Add(listSumPasswordSymbolsS1);
                 }
 
                 // Очистка списка
