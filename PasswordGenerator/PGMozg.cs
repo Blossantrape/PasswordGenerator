@@ -9,10 +9,6 @@ namespace PasswordGenerator
 {
     class PGMozg : PGMain
     {
-        //readonly public Random randomPassword = new Random();
-
-        //public List<string> ListQuantitySymbols = new List<string>(); // Список символов
-        //public List<string> ListQuantityPasswords = new List<string>(); // Список паролей
 
         public void FullPassword()
         {
