@@ -16,7 +16,9 @@
             PGCondicions Optional = new PGCondicions();
 
             // Опцональность пароля
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Enter the optional password or click Enter to get help");
+            Console.ResetColor();
             string? setingsPassword = Console.ReadLine();
             Console.Clear();
 
