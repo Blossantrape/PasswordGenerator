@@ -1,24 +1,16 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PasswordGenerator
+﻿namespace PasswordGenerator
 {
     class PGMozg : PGMain
     {
-
         public void FullPassword()
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
-            int QuantityPassword = int.Parse(Console.ReadLine());
+            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
-            int QuantitySymbols = int.Parse(Console.ReadLine());
+            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
 
             // Переменная для номера пароля
             int p = 0;
@@ -29,19 +21,14 @@ namespace PasswordGenerator
                 // Основная логика генерации пароля (FullPassword)
                 for (int i = 0; i < QuantitySymbols; i++)
                 {
-                    // Цифры от 1-9
-                    int value = randomPassword.Next(0, 9);
-                    string valueString = Convert.ToString(value);
-
                     // Рандомная генерация символов по таблице ASCII в диапазоне 33 - 125
-                    char valueS = (char)randomPassword.Next(33, 125);
+                    char valueS = (char)RandomPassword.Next(33, 125);
 
                     // Логика замены генерируемых символов из valueS "\\" и "/" на числа таблицы ASCII в диапазоне 33 - 125  
                     if (valueS == '\\' || valueS == '/')
                     {
-                        valueS = (char)randomPassword.Next(33, 91);
+                        valueS = (char)RandomPassword.Next(33, 91);
                         //Console.WriteLine($"IFPassword №:{i} -> {valueS}"); // Проверка
-                        valueS.ToString();
 
                         // Добавление символов в список ListQuantitySymbols с конвертацией
                         ListQuantitySymbols.Add(valueS.ToString());

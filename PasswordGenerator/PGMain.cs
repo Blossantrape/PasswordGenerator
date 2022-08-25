@@ -1,43 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PasswordGenerator
+﻿namespace PasswordGenerator
 {
     class PGMain
     {
-
-        readonly public Random randomPassword = new Random();
+        readonly public Random RandomPassword = new Random();
 
         public List<string> ListQuantitySymbols = new List<string>(); // Список символов
         public List<string> ListQuantityPasswords = new List<string>(); // Список паролей
 
-        public static void Setings()
+        private static void Setings()
         {
             PGMozg Full = new PGMozg();
-            PGCondicions Test = new PGCondicions();
+            PGCondicions Optional = new PGCondicions();
 
             // Опцональность пароля
             Console.WriteLine("Опцональность пароля");
-            string? SetingsPassword = Console.ReadLine();
+            string? setingsPassword = Console.ReadLine();
 
-            switch (SetingsPassword)
+            switch (setingsPassword)
             {
                 case "Full":
                     Full.FullPassword();
                     break;
-                case "0":
-                    // Переделать
-                    Test.hz();
+                case "NLUL":
+                    Optional.NumberLetterUL();
                     break;
-                case "1":
-                    Test.NumberLetterLU();
+                case "NLU":
+                    Optional.NumberLetterU();
                     break;
-                case "4":
-                    // Действие
+                case "NLL":
+                    Optional.NumberLetterL();
+                    break;
+                case "LUL":
+                    Optional.LetterUL();
+                    break;
+                case "LU":
+                    Optional.LetterU();
+                    break;
+                case "LL":
+                    Optional.LetterL();
+                    break;
+                case "N":
+                    Optional.Number();
+                    break;
+                case "SNLU":
+                    Optional.SpecialNumberLetterU();
+                    break;
+                case "SNLL":
+                    Optional.SpecialNumberLetterL();
+                    break;
+                case "SN":
+                    Optional.SpecialNumber();
+                    break;
+                case "SLU":
+                    Optional.SpecialLetterU();
+                    break;
+                case "SLL":                   
+                    Optional.SpecialLetterL();
+                    break;
+                case "S" :
+                    Optional.Special();
                     break;
 
             }
@@ -45,7 +66,6 @@ namespace PasswordGenerator
 
         public static void Main(string[] args)
         {
-            PGMozg GenPassword = new PGMozg();
             PGMain.Setings();
 
             // Решает баг ниже

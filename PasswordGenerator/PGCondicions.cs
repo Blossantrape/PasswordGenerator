@@ -1,25 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
 namespace PasswordGenerator
 {
     class PGCondicions : PGMain
     {
-        public void hz()
+        public void NumberLetterU()
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
-            int QuantityPassword = int.Parse(Console.ReadLine());
+            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
-            int QuantitySymbols = int.Parse(Console.ReadLine());
-
-            string[] strings = new string[QuantitySymbols]; // Основной массив
+            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
 
             // Переменная для номера пароля
             int p = 0;
@@ -30,22 +23,552 @@ namespace PasswordGenerator
                 // Основная логика генерации пароля (FullPassword)
                 for (int i = 0; i < QuantitySymbols; i++)
                 {
-                    // Цифры от 1-9
-                    int value = randomPassword.Next(0, 9);
-                    string valueString = Convert.ToString(value);
+                    // Рандомная генерация символов по таблице ASCII в диапазоне Next
+                    char valueS = (char)RandomPassword.Next(48, 90);
 
-                    // Рандомная генерация символов по таблице ASCII в диапазоне 33 - 125
-                    char valueS = (char)randomPassword.Next(33, 125);
+                    // Для проверки символа "'"
+                    bool check = Convert.ToChar(valueS) == Convert.ToChar(96);
 
-                    // Логика замены генерируемых символов из valueS "\\" и "/" на числа таблицы ASCII в диапазоне 33 - 125  
+                    // Логика замены генерируемых символов из valueS "\\" и "/" на числа таблицы ASCII в диапазоне Next 
                     if (valueS == '\\' || valueS == '/')
                     {
-                        valueS = (char)randomPassword.Next(33, 91);
+                        valueS = (char)RandomPassword.Next(48, 57);
+                        //Console.WriteLine($"IFPassword №:{i} -> {valueS}"); // Проверка
 
                         // Добавление символов в список ListQuantitySymbols с конвертацией
                         ListQuantitySymbols.Add(valueS.ToString());
                     }
-                    // Если в генерации не попались символы "\\" и "/"
+                    else if (valueS == ':' || valueS == ';' || valueS == '<' || valueS == '=' || valueS == '>' || valueS == '?'  || valueS == '@')
+                    {
+                        valueS = (char)RandomPassword.Next(48, 57);
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else if (valueS == '[' || valueS == ']' || valueS == '^' || valueS == '_')
+                    {
+                        valueS = (char)RandomPassword.Next(65, 90);
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else if (check)
+                    {
+                        valueS = (char)RandomPassword.Next(65, 90);
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else
+                    {
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                }
+
+                // Переменная для номера пароля
+                p++;
+
+                Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
+                Console.Write($"\nPasswordTest {p}: ");
+                Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+
+                // Вывод пароля и перебор
+                foreach (string listSumPasswordSymbolsS1 in ListQuantitySymbols)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Изменяет цвет текста в консоли на Yellow
+                    Console.Write($"{listSumPasswordSymbolsS1}");
+                    Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+                }
+
+                // Очистка списка
+                ListQuantitySymbols.Clear();
+            }
+        }
+        
+        public void NumberLetterUL()
+        {
+            Console.WriteLine("Сколько паролей");
+            // конвертация string в int
+            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            Console.WriteLine("Сколько символов в пароле");
+            // конвертация string в int
+            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            // Переменная для номера пароля
+            int p = 0;
+
+            // Цикл количества паролей
+            for (int b = 1; b <= QuantityPassword; b++)
+            {
+                // Основная логика генерации пароля (FullPassword)
+                for (int i = 0; i < QuantitySymbols; i++)
+                {
+                    // Рандомная генерация символов по таблице ASCII в диапазоне 33 - 125
+                    char valueS = (char)RandomPassword.Next(48, 122);
+
+                    // Для проверки символа "'"
+                    bool check = Convert.ToChar(valueS) == Convert.ToChar(96);
+
+                    // Логика замены генерируемых символов из valueS "\\" и "/" на числа таблицы ASCII в диапазоне 33 - 125  
+                    if (valueS == '\\' || valueS == '/')
+                    {
+                        valueS = (char)RandomPassword.Next(97, 122);
+                        //Console.WriteLine($"IFPassword №:{i} -> {valueS}"); // Проверка
+
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else if (valueS == ':' || valueS == ';' || valueS == '<' || valueS == '=' || valueS == '>' || valueS == '?'  || valueS == '@')
+                    {
+                        valueS = (char)RandomPassword.Next(48, 57);
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else if (valueS == '[' || valueS == ']' || valueS == '^' || valueS == '_')
+                    {
+                        valueS = (char)RandomPassword.Next(65, 90);
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else if (check)
+                    {
+                        valueS = (char)RandomPassword.Next(65, 90);
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else
+                    {
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                }
+
+                // Переменная для номера пароля
+                p++;
+
+                Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
+                Console.Write($"\nPasswordTest {p}: ");
+                Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+
+                // Вывод пароля и перебор
+                foreach (string listSumPasswordSymbolsS1 in ListQuantitySymbols)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Изменяет цвет текста в консоли на Yellow
+                    Console.Write($"{listSumPasswordSymbolsS1}");
+                    Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+                }
+
+                // Очистка списка
+                ListQuantitySymbols.Clear();
+            }
+        }
+        public void NumberLetterL()
+        {
+            Console.WriteLine("Сколько паролей");
+            // конвертация string в int
+            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            Console.WriteLine("Сколько символов в пароле");
+            // конвертация string в int
+            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            // Переменная для номера пароля
+            int p = 0;
+
+            // Цикл количества паролей
+            for (int b = 1; b <= QuantityPassword; b++)
+            {
+                // Основная логика генерации пароля (FullPassword)
+                for (int i = 0; i < QuantitySymbols; i++)
+                {
+                    // Рандомная генерация символов по таблице ASCII в диапазоне Next
+                    char valueS = (char)RandomPassword.Next(91, 125);
+
+                    // Для проверки символа "'"
+                    bool check = Convert.ToChar(valueS) == Convert.ToChar(96);
+
+                    // Логика замены генерируемых символов из valueS "\\" и "/" на числа таблицы ASCII в диапазоне Next  
+                    if (valueS == '\\' || valueS == '/')
+                    {
+                        valueS = (char)RandomPassword.Next(97, 122);
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else if (valueS == ':' || valueS == ';' || valueS == '<' || valueS == '=' || valueS == '>' || valueS == '?'  || valueS == '|')
+                    {
+                        valueS = (char)RandomPassword.Next(48, 57);
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else if (valueS == '[' || valueS == ']' || valueS == '^' || valueS == '_'  || valueS == '@'  || valueS == '{'  || valueS == '}')
+                    {
+                        valueS = (char)RandomPassword.Next(48, 57);
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else if (check)
+                    {
+                        valueS = (char)RandomPassword.Next(97, 122);
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else
+                    {
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                }
+
+                // Переменная для номера пароля
+                p++;
+
+                Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
+                Console.Write($"\nPasswordTest {p}: ");
+                Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+
+                // Вывод пароля и перебор
+                foreach (string listSumPasswordSymbolsS1 in ListQuantitySymbols)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Изменяет цвет текста в консоли на Yellow
+                    Console.Write($"{listSumPasswordSymbolsS1}");
+                    Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+                }
+
+                // Очистка списка
+                ListQuantitySymbols.Clear();
+            }
+        }
+        public void LetterUL()
+        {
+            Console.WriteLine("Сколько паролей");
+            // конвертация string в int
+            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            Console.WriteLine("Сколько символов в пароле");
+            // конвертация string в int
+            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            // Переменная для номера пароля
+            int p = 0;
+
+            // Цикл количества паролей
+            for (int b = 1; b <= QuantityPassword; b++)
+            {
+                // Основная логика генерации пароля (FullPassword)
+                for (int i = 0; i < QuantitySymbols; i++)
+                {
+                    // Рандомная генерация символов по таблице ASCII в диапазоне Next
+                    char valueS = (char)RandomPassword.Next(65, 122);
+
+                    // Для проверки символа "'"
+                    bool check = Convert.ToChar(valueS) == Convert.ToChar(96);
+
+                    // Логика замены генерируемых символов из valueS "\\" и "/" на числа таблицы ASCII в диапазоне Next  
+                    if (valueS == '\\' || valueS == '/')
+                    {
+                        valueS = (char)RandomPassword.Next(65, 90);
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else if (valueS == ':' || valueS == ';' || valueS == '<' || valueS == '=' || valueS == '>' || valueS == '?'  || valueS == '|')
+                    {
+                        valueS = (char)RandomPassword.Next(97, 122);
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else if (valueS == '[' || valueS == ']' || valueS == '^' || valueS == '_'  || valueS == '@'  || valueS == '{'  || valueS == '}')
+                    {
+                        valueS = (char)RandomPassword.Next(65, 90);
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else if (check)
+                    {
+                        valueS = (char)RandomPassword.Next(97, 122);
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else
+                    {
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                }
+
+                // Переменная для номера пароля
+                p++;
+
+                Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
+                Console.Write($"\nPasswordTest {p}: ");
+                Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+
+                // Вывод пароля и перебор
+                foreach (string listSumPasswordSymbolsS1 in ListQuantitySymbols)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Изменяет цвет текста в консоли на Yellow
+                    Console.Write($"{listSumPasswordSymbolsS1}");
+                    Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+                }
+
+                // Очистка списка
+                ListQuantitySymbols.Clear();
+            }
+        }
+        public void LetterU()
+        {
+            Console.WriteLine("Сколько паролей");
+            // конвертация string в int
+            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            Console.WriteLine("Сколько символов в пароле");
+            // конвертация string в int
+            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            // Переменная для номера пароля
+            int p = 0;
+
+            // Цикл количества паролей
+            for (int b = 1; b <= QuantityPassword; b++)
+            {
+                // Основная логика генерации пароля (FullPassword)
+                for (int i = 0; i < QuantitySymbols; i++)
+                {
+                    // Рандомная генерация символов по таблице ASCII в диапазоне Next
+                    char valueS = (char)RandomPassword.Next(65, 90);
+                    ListQuantitySymbols.Add(valueS.ToString());
+                }
+
+                // Переменная для номера пароля
+                p++;
+
+                Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
+                Console.Write($"\nPasswordTest {p}: ");
+                Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+
+                // Вывод пароля и перебор
+                foreach (string listSumPasswordSymbolsS1 in ListQuantitySymbols)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Изменяет цвет текста в консоли на Yellow
+                    Console.Write($"{listSumPasswordSymbolsS1}");
+                    Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+                }
+
+                // Очистка списка
+                ListQuantitySymbols.Clear();
+            }
+        }
+        public void LetterL()
+        {
+            Console.WriteLine("Сколько паролей");
+            // конвертация string в int
+            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            Console.WriteLine("Сколько символов в пароле");
+            // конвертация string в int
+            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            // Переменная для номера пароля
+            int p = 0;
+
+            // Цикл количества паролей
+            for (int b = 1; b <= QuantityPassword; b++)
+            {
+                // Основная логика генерации пароля (FullPassword)
+                for (int i = 0; i < QuantitySymbols; i++)
+                {
+                    // Рандомная генерация символов по таблице ASCII в диапазоне Next
+                    char valueS = (char)RandomPassword.Next(97, 122);
+                    ListQuantitySymbols.Add(valueS.ToString());
+                }
+
+                // Переменная для номера пароля
+                p++;
+
+                Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
+                Console.Write($"\nPasswordTest {p}: ");
+                Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+
+                // Вывод пароля и перебор
+                foreach (string listSumPasswordSymbolsS1 in ListQuantitySymbols)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Изменяет цвет текста в консоли на Yellow
+                    Console.Write($"{listSumPasswordSymbolsS1}");
+                    Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+                }
+
+                // Очистка списка
+                ListQuantitySymbols.Clear();
+            }
+        }
+        public void Number()
+        {
+            Console.WriteLine("Сколько паролей");
+            // конвертация string в int
+            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            Console.WriteLine("Сколько символов в пароле");
+            // конвертация string в int
+            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            // Переменная для номера пароля
+            int p = 0;
+
+            // Цикл количества паролей
+            for (int b = 1; b <= QuantityPassword; b++)
+            {
+                // Основная логика генерации пароля (FullPassword)
+                for (int i = 0; i < QuantitySymbols; i++)
+                {
+                    // Рандомная генерация символов по таблице ASCII в диапазоне Next
+                    char valueS = (char)RandomPassword.Next(48, 57);
+                    ListQuantitySymbols.Add(valueS.ToString());
+                }
+
+                // Переменная для номера пароля
+                p++;
+
+                Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
+                Console.Write($"\nPasswordTest {p}: ");
+                Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+
+                // Вывод пароля и перебор
+                foreach (string listSumPasswordSymbolsS1 in ListQuantitySymbols)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Изменяет цвет текста в консоли на Yellow
+                    Console.Write($"{listSumPasswordSymbolsS1}");
+                    Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+                }
+
+                // Очистка списка
+                ListQuantitySymbols.Clear();
+            }
+        }
+        public void SpecialNumberLetterU()
+        {
+            Console.WriteLine("Сколько паролей");
+            // конвертация string в int
+            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            Console.WriteLine("Сколько символов в пароле");
+            // конвертация string в int
+            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            // Переменная для номера пароля
+            int p = 0;
+
+            // Цикл количества паролей
+            for (int b = 1; b <= QuantityPassword; b++)
+            {
+                // Основная логика генерации пароля (FullPassword)
+                for (int i = 0; i < QuantitySymbols; i++)
+                {
+                    // Рандомная генерация символов по таблице ASCII в диапазоне Next
+                    char valueS = (char)RandomPassword.Next(33, 96);
+
+                    // Логика замены генерируемых символов из valueS "\\" и "/" на числа таблицы ASCII в диапазоне Next  
+                    if (valueS == '\\' || valueS == '/')
+                    {
+                        valueS = (char)RandomPassword.Next(123, 125);
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else
+                    {
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                }
+
+                // Переменная для номера пароля
+                p++;
+
+                Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
+                Console.Write($"\nPasswordTest {p}: ");
+                Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+
+                // Вывод пароля и перебор
+                foreach (string listSumPasswordSymbolsS1 in ListQuantitySymbols)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Изменяет цвет текста в консоли на Yellow
+                    Console.Write($"{listSumPasswordSymbolsS1}");
+                    Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+                }
+
+                // Очистка списка
+                ListQuantitySymbols.Clear();
+            }
+        }
+        public void SpecialNumberLetterL()
+        {
+            Console.WriteLine("Сколько паролей");
+            // конвертация string в int
+            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            Console.WriteLine("Сколько символов в пароле");
+            // конвертация string в int
+            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            // Переменная для номера пароля
+            int p = 0;
+
+            // Цикл количества паролей
+            for (int b = 1; b <= QuantityPassword; b++)
+            {
+                // Основная логика генерации пароля (FullPassword)
+                for (int i = 0; i < QuantitySymbols; i++)
+                {
+                    // Рандомная генерация символов по таблице ASCII в диапазоне Next
+                    char valueS = (char)RandomPassword.Next(33, 125);
+
+                    // Логика замены генерируемых символов из valueS "\\" и "/" на числа таблицы ASCII в диапазоне Next  
+                    if (valueS == '\\' || valueS == '/')
+                    {
+                        valueS = (char)RandomPassword.Next(33, 125);
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString().ToLower());
+                    }
+                    else
+                    {
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString().ToLower());
+                    }
+                }
+
+                // Переменная для номера пароля
+                p++;
+
+                Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
+                Console.Write($"\nPasswordTest {p}: ");
+                Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+
+                // Вывод пароля и перебор
+                foreach (string listSumPasswordSymbolsS1 in ListQuantitySymbols)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Изменяет цвет текста в консоли на Yellow
+                    Console.Write($"{listSumPasswordSymbolsS1}");
+                    Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+                }
+
+                // Очистка списка
+                ListQuantitySymbols.Clear();
+            }
+        }
+        public void SpecialNumber()
+        {
+            Console.WriteLine("Сколько паролей");
+            // конвертация string в int
+            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            Console.WriteLine("Сколько символов в пароле");
+            // конвертация string в int
+            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            // Переменная для номера пароля
+            int p = 0;
+
+            // Цикл количества паролей
+            for (int b = 1; b <= QuantityPassword; b++)
+            {
+                // Основная логика генерации пароля (FullPassword)
+                for (int i = 0; i < QuantitySymbols; i++)
+                {
+                    // Рандомная генерация символов по таблице ASCII в диапазоне Next
+                    char valueS = (char)RandomPassword.Next(33, 64);
+                    
+                    // Логика замены генерируемых символов из valueS "\\" и "/" на числа таблицы ASCII в диапазоне Next  
+                    if (valueS == '\\' || valueS == '/')
+                    {
+                        valueS = (char)RandomPassword.Next(91, 96);
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
                     else
                     {
                         // Добавление символов в список ListQuantitySymbols с конвертацией
@@ -72,18 +595,15 @@ namespace PasswordGenerator
                 ListQuantitySymbols.Clear();
             }
         }
-
-        public void NumberLetterLU()
+        public void SpecialLetterU()
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
-            int QuantityPassword = int.Parse(Console.ReadLine());
+            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
-            int QuantitySymbols = int.Parse(Console.ReadLine());
-
-            string[] strings = new string[QuantitySymbols]; // Основной массив
+            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
 
             // Переменная для номера пароля
             int p = 0;
@@ -94,48 +614,31 @@ namespace PasswordGenerator
                 // Основная логика генерации пароля (FullPassword)
                 for (int i = 0; i < QuantitySymbols; i++)
                 {
-                    // Рандомная генерация символов по таблице ASCII в диапазоне 33 - 125
-                    char valueS = (char)randomPassword.Next(48, 122);
+                    // Рандомная генерация символов по таблице ASCII в диапазоне Next
+                    char valueS = (char)RandomPassword.Next(33, 125);
 
-                    // Для проверки символа "'"
-                    bool check = Convert.ToChar(valueS) == Convert.ToChar(96);
-
-                    // Логика замены генерируемых символов из valueS "\\" и "/" на числа таблицы ASCII в диапазоне 33 - 125  
+                    // Логика замены генерируемых символов из valueS "\\" и "/" на числа таблицы ASCII в диапазоне Next  
                     if (valueS == '\\' || valueS == '/')
                     {
-                        valueS = (char)randomPassword.Next(97, 122);
-                        //Console.WriteLine($"IFPassword №:{i} -> {valueS}"); // Проверка
-                        valueS.ToString();
-
+                        valueS = (char)RandomPassword.Next(123, 125);
                         // Добавление символов в список ListQuantitySymbols с конвертацией
-                        ListQuantitySymbols.Add(valueS.ToString());
+                        ListQuantitySymbols.Add(valueS.ToString().ToUpper());
                     }
-                    else if (valueS == ':' || valueS == ';' || valueS == '<' || valueS == '=' || valueS == '>' || valueS == '?'  || valueS == '@')
+                    else if (valueS == '0' || valueS == '2' || valueS == '4' || valueS == '5'  || valueS == '6')
                     {
-                        valueS = (char)randomPassword.Next(48, 57);
-                        valueS.ToString();
-                        ListQuantitySymbols.Add(valueS.ToString());
+                        valueS = (char)RandomPassword.Next(33, 47);
+                        ListQuantitySymbols.Add(valueS.ToString().ToUpper());
                     }
-                    else if (valueS == '[' || valueS == ']' || valueS == '^' || valueS == '_')
+                    else if (valueS == '7' || valueS == '8' || valueS == '9' || valueS == '1'  || valueS == '3')
                     {
-                        valueS = (char)randomPassword.Next(65, 90);
-                        valueS.ToString();
-                        ListQuantitySymbols.Add(valueS.ToString());
-                    }
-                    else if (check == true)
-                    {
-                        valueS = (char)randomPassword.Next(65, 90);
-                        valueS.ToString();
-                        ListQuantitySymbols.Add(valueS.ToString());
+                        valueS = (char)RandomPassword.Next(91, 96);
+                        ListQuantitySymbols.Add(valueS.ToString().ToUpper());
                     }
                     else
                     {
                         // Добавление символов в список ListQuantitySymbols с конвертацией
-                        ListQuantitySymbols.Add(valueS.ToString());
+                        ListQuantitySymbols.Add(valueS.ToString().ToUpper());
                     }
-
-                    // Копирует список в массив strings
-                    ListQuantitySymbols.CopyTo(strings);
                 }
 
                 // Переменная для номера пароля
@@ -157,5 +660,135 @@ namespace PasswordGenerator
                 ListQuantitySymbols.Clear();
             }
         }
+        public void SpecialLetterL()
+        {
+            Console.WriteLine("Сколько паролей");
+            // конвертация string в int
+            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            Console.WriteLine("Сколько символов в пароле");
+            // конвертация string в int
+            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            // Переменная для номера пароля
+            int p = 0;
+
+            // Цикл количества паролей
+            for (int b = 1; b <= QuantityPassword; b++)
+            {
+                // Основная логика генерации пароля (FullPassword)
+                for (int i = 0; i < QuantitySymbols; i++)
+                {
+                    // Рандомная генерация символов по таблице ASCII в диапазоне Next
+                    char valueS = (char)RandomPassword.Next(33, 125);
+
+                    // Логика замены генерируемых символов из valueS "\\" и "/" на числа таблицы ASCII в диапазоне Next  
+                    if (valueS == '\\' || valueS == '/')
+                    {
+                        valueS = (char)RandomPassword.Next(123, 125);
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString().ToLower());
+                    }
+                    else if (valueS == '0' || valueS == '2' || valueS == '4' || valueS == '5'  || valueS == '6')
+                    {
+                        valueS = (char)RandomPassword.Next(33, 47);
+                        ListQuantitySymbols.Add(valueS.ToString().ToLower());
+                    }
+                    else if (valueS == '7' || valueS == '8' || valueS == '9' || valueS == '1'  || valueS == '3')
+                    {
+                        valueS = (char)RandomPassword.Next(91, 96);
+                        ListQuantitySymbols.Add(valueS.ToString().ToLower());
+                    }
+                    else
+                    {
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString().ToLower());
+                    }
+                }
+
+                // Переменная для номера пароля
+                p++;
+
+                Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
+                Console.Write($"\nPasswordTest {p}: ");
+                Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+
+                // Вывод пароля и перебор
+                foreach (string listSumPasswordSymbolsS1 in ListQuantitySymbols)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Изменяет цвет текста в консоли на Yellow
+                    Console.Write($"{listSumPasswordSymbolsS1}");
+                    Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+                }
+
+                // Очистка списка
+                ListQuantitySymbols.Clear();
+            }
+        }
+        public void Special()
+        {
+            
+            
+            Console.WriteLine("Сколько паролей");
+            // конвертация string в int
+            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+
+            Console.WriteLine("Сколько символов в пароле");
+            // конвертация string в int
+            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            
+            // Переменная для номера пароля
+            int p = 0;
+
+            // Цикл количества паролей
+            for (int b = 1; b <= QuantityPassword; b++)
+            {
+                // Основная логика генерации пароля (FullPassword)
+                for (int i = 0; i < QuantitySymbols; i++)
+                {
+                    // Regex - замена символов
+                    const string versus = @"\w";
+                    char swap = (char)RandomPassword.Next(33, 47);
+                    Regex regex = new Regex(versus);
+                    
+                    // Рандомная генерация символов по таблице ASCII в диапазоне Next
+                    char valueS = (char)RandomPassword.Next(33, 125);
+                    
+                    // Логика замены генерируемых символов из valueS "\\" и "/" на числа таблицы ASCII в диапазоне Next  
+                    if (valueS == '\\' || valueS == '/')
+                    {
+                        valueS = (char)RandomPassword.Next(58, 64);
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                    else
+                    {
+                        string passSwap = regex.Replace(valueS.ToString(), swap.ToString());
+                        
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(passSwap);
+                    }
+                }
+
+                // Переменная для номера пароля
+                p++;
+
+                Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
+                Console.Write($"\nPasswordTest {p}: ");
+                Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+
+                // Вывод пароля и перебор
+                foreach (string listSumPasswordSymbolsS1 in ListQuantitySymbols)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Изменяет цвет текста в консоли на Yellow
+                    Console.Write($"{listSumPasswordSymbolsS1}");
+                    Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+                }
+
+                // Очистка списка
+                ListQuantitySymbols.Clear();
+            }
+        }
+        
     }
 }
