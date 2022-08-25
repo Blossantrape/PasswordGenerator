@@ -2,19 +2,23 @@
 {
     class PGMain
     {
-        readonly public Random RandomPassword = new Random();
+        protected readonly Random RandomPassword = new Random();
 
-        public List<string> ListQuantitySymbols = new List<string>(); // Список символов
-        public List<string> ListQuantityPasswords = new List<string>(); // Список паролей
+        // Список символов
+        protected readonly List<string> ListQuantitySymbols = new List<string>(); 
 
+        /// <summary>
+        /// Optional Password
+        /// </summary>
         private static void Setings()
         {
             PGMozg Full = new PGMozg();
             PGCondicions Optional = new PGCondicions();
 
             // Опцональность пароля
-            Console.WriteLine("Опцональность пароля");
+            Console.WriteLine("Enter the optional password or click Enter to get help");
             string? setingsPassword = Console.ReadLine();
+            Console.Clear();
 
             switch (setingsPassword)
             {
@@ -60,18 +64,19 @@
                 case "S" :
                     Optional.Special();
                     break;
-
+                default:
+                    Full.Help();
+                    break;
             }
         }      
 
         public static void Main(string[] args)
         {
             PGMain.Setings();
-
+            
             // Решает баг ниже
             Console.WriteLine("\n");
-
-            // Из-за него бег с пропаданием символа "P" в Password (у последнего пароля) в консоли
+            // Из-за него бег с пропаданием символа "P" в Password (у последнего пароля) на некоторых консолях
             Console.ReadKey();
         }
     }

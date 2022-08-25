@@ -12,10 +12,12 @@ namespace PasswordGenerator
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
             int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
             int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
@@ -90,10 +92,12 @@ namespace PasswordGenerator
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
             int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
             int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
@@ -168,10 +172,12 @@ namespace PasswordGenerator
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
             int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
             int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
@@ -244,10 +250,12 @@ namespace PasswordGenerator
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
             int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
             int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
@@ -320,10 +328,12 @@ namespace PasswordGenerator
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
             int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
             int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
@@ -366,10 +376,12 @@ namespace PasswordGenerator
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
             int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
             int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
@@ -412,10 +424,12 @@ namespace PasswordGenerator
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
             int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
             int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
@@ -451,17 +465,19 @@ namespace PasswordGenerator
             }
         }
         /// <summary>
-        /// Using symbols on generate password: Special, Number, Letter upper register
+        /// Using symbols on generate password: Special, Number, Letter upper register.
         /// </summary>
         public void SpecialNumberLetterU()
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
             int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
             int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
@@ -509,17 +525,19 @@ namespace PasswordGenerator
             }
         }
         /// <summary>
-        /// Using symbols on generate password: Special, Number, Letter lower register
+        /// Using symbols on generate password: Special, Number, Letter lower register.
         /// </summary>
         public void SpecialNumberLetterL()
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
             int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
             int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
@@ -567,17 +585,19 @@ namespace PasswordGenerator
             }
         }
         /// <summary>
-        /// Using symbols on generate password: Special, Number
+        /// Using symbols on generate password: Special, Number.
         /// </summary>
         public void SpecialNumber()
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
             int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
             int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
@@ -625,17 +645,19 @@ namespace PasswordGenerator
             }
         }
         /// <summary>
-        /// Using symbols on generate password: Special, Letter upper register
+        /// Using symbols on generate password: Special, Letter upper register.
         /// </summary>
         public void SpecialLetterU()
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
             int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
             int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
@@ -693,17 +715,19 @@ namespace PasswordGenerator
             }
         }
         /// <summary>
-        /// Using symbols on generate password: Special, Letter lower register
+        /// Using symbols on generate password: Special, Letter lower register.
         /// </summary>
         public void SpecialLetterL()
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
             int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
             int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
@@ -761,7 +785,7 @@ namespace PasswordGenerator
             }
         }
         /// <summary>
-        /// Using symbols on generate password: Special
+        /// Using symbols on generate password: Special.
         /// </summary>
         public void Special()
         {
@@ -770,10 +794,12 @@ namespace PasswordGenerator
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
             int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
             int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
             
             // Переменная для номера пароля
             int p = 0;
