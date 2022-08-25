@@ -2,6 +2,9 @@
 {
     class PGMozg : PGMain
     {
+        /// <summary>
+        /// Using symbols on generate password: All.
+        /// </summary>
         public void FullPassword()
         {
             Console.WriteLine("Сколько паролей");

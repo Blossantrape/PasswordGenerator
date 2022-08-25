@@ -4,6 +4,9 @@ namespace PasswordGenerator
 {
     class PGCondicions : PGMain
     {
+        /// <summary>
+        /// Using symbols on generate password: Number, Letter Upper register.
+        /// </summary>
         public void NumberLetterU()
         {
             Console.WriteLine("Сколько паролей");
@@ -79,7 +82,9 @@ namespace PasswordGenerator
                 ListQuantitySymbols.Clear();
             }
         }
-        
+        /// <summary>
+        /// Using symbols on generate password: Number, Letter upper and lower register.
+        /// </summary>
         public void NumberLetterUL()
         {
             Console.WriteLine("Сколько паролей");
@@ -155,6 +160,9 @@ namespace PasswordGenerator
                 ListQuantitySymbols.Clear();
             }
         }
+        /// <summary>
+        /// Using symbols on generate password: Number, Letter lower.
+        /// </summary>
         public void NumberLetterL()
         {
             Console.WriteLine("Сколько паролей");
@@ -228,6 +236,9 @@ namespace PasswordGenerator
                 ListQuantitySymbols.Clear();
             }
         }
+        /// <summary>
+        /// Using symbols on generate password: Letter upper and lower register.
+        /// </summary>
         public void LetterUL()
         {
             Console.WriteLine("Сколько паролей");
@@ -301,6 +312,9 @@ namespace PasswordGenerator
                 ListQuantitySymbols.Clear();
             }
         }
+        /// <summary>
+        /// Using symbols on generate password: Letter upper register.
+        /// </summary>
         public void LetterU()
         {
             Console.WriteLine("Сколько паролей");
@@ -344,6 +358,9 @@ namespace PasswordGenerator
                 ListQuantitySymbols.Clear();
             }
         }
+        /// <summary>
+        /// Using symbols on generate password: Letter lower register.
+        /// </summary>
         public void LetterL()
         {
             Console.WriteLine("Сколько паролей");
@@ -387,6 +404,9 @@ namespace PasswordGenerator
                 ListQuantitySymbols.Clear();
             }
         }
+        /// <summary>
+        /// Using symbols on generate password: Number
+        /// </summary>
         public void Number()
         {
             Console.WriteLine("Сколько паролей");
@@ -430,6 +450,9 @@ namespace PasswordGenerator
                 ListQuantitySymbols.Clear();
             }
         }
+        /// <summary>
+        /// Using symbols on generate password: Special, Number, Letter upper register
+        /// </summary>
         public void SpecialNumberLetterU()
         {
             Console.WriteLine("Сколько паролей");
@@ -485,6 +508,9 @@ namespace PasswordGenerator
                 ListQuantitySymbols.Clear();
             }
         }
+        /// <summary>
+        /// Using symbols on generate password: Special, Number, Letter lower register
+        /// </summary>
         public void SpecialNumberLetterL()
         {
             Console.WriteLine("Сколько паролей");
@@ -540,6 +566,9 @@ namespace PasswordGenerator
                 ListQuantitySymbols.Clear();
             }
         }
+        /// <summary>
+        /// Using symbols on generate password: Special, Number
+        /// </summary>
         public void SpecialNumber()
         {
             Console.WriteLine("Сколько паролей");
@@ -595,6 +624,9 @@ namespace PasswordGenerator
                 ListQuantitySymbols.Clear();
             }
         }
+        /// <summary>
+        /// Using symbols on generate password: Special, Letter upper register
+        /// </summary>
         public void SpecialLetterU()
         {
             Console.WriteLine("Сколько паролей");
@@ -660,6 +692,9 @@ namespace PasswordGenerator
                 ListQuantitySymbols.Clear();
             }
         }
+        /// <summary>
+        /// Using symbols on generate password: Special, Letter lower register
+        /// </summary>
         public void SpecialLetterL()
         {
             Console.WriteLine("Сколько паролей");
@@ -725,6 +760,9 @@ namespace PasswordGenerator
                 ListQuantitySymbols.Clear();
             }
         }
+        /// <summary>
+        /// Using symbols on generate password: Special
+        /// </summary>
         public void Special()
         {
             
@@ -789,6 +827,5 @@ namespace PasswordGenerator
                 ListQuantitySymbols.Clear();
             }
         }
-        
     }
 }
