@@ -12,7 +12,6 @@ namespace PasswordGenerator
         /// <summary>
         /// Optional Password
         /// </summary>
-        [SuppressMessage("ReSharper.DPA", "DPA0000: DPA issues")]
         private static void Settings()
         {
             HelpC full = new HelpC();
