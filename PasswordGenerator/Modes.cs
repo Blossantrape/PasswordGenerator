@@ -2,8 +2,81 @@
 
 namespace PasswordGenerator
 {
-    class PGCondicions : PGMain
+    class Modes : Input
     {
+        /// <summary>
+        /// Using symbols on generate password: All.
+        /// </summary>
+        public void FullPassword()
+        {
+            Console.WriteLine("Сколько паролей");
+            // конвертация string в int
+            int quantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
+
+            Console.WriteLine("Сколько символов в пароле");
+            // конвертация string в int
+            int quantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            Console.Clear();
+
+            // Переменная для номера пароля
+            int p = 0;
+
+            // Цикл количества паролей
+            for (int b = 1; b <= quantityPassword; b++)
+            {
+                // Основная логика генерации пароля (FullPassword)
+                for (int i = 0; i < quantitySymbols; i++)
+                {
+                    // Рандомная генерация символов по таблице ASCII в диапазоне 33 - 125
+                    char valueS = (char)RandomPassword.Next(33, 125);
+
+                    // Логика замены генерируемых символов из valueS "\\" и "/" на числа таблицы ASCII в диапазоне 33 - 125  
+                    if (valueS == '\\' || valueS == '/')
+                    {
+                        valueS = (char)RandomPassword.Next(33, 91);
+                        //Console.WriteLine($"IFPassword №:{i} -> {valueS}"); // Проверка
+
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+
+                    // Если в генерации не попались символы "\\" и "/"
+                    else
+                    {
+                        //Console.WriteLine($"ELSEPassword №:{i} -> {valueS}"); // Проверка
+
+                        // Добавление символов в список ListQuantitySymbols с конвертацией
+                        ListQuantitySymbols.Add(valueS.ToString());
+                    }
+                }
+
+                // Переменная для номера пароля
+                p++;
+
+                // проверка списка
+                //foreach (string listSumPasswordSymbolsS in ListQuantitySymbols)
+                //{
+                //    Console.WriteLine($"Symbol: {listSumPasswordSymbolsS}");
+                //}
+
+                Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
+                Console.Write($"\nPassword {p}: ");
+                Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+
+                // Вывод пароля и перебор
+                foreach (string listSumPasswordSymbolsS1 in ListQuantitySymbols)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Изменяет цвет текста в консоли на Yellow
+                    Console.Write($"{listSumPasswordSymbolsS1}");
+                    Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
+                }
+
+                // Очистка списка
+                ListQuantitySymbols.Clear(); 
+            }
+        }
+        
         /// <summary>
         /// Using symbols on generate password: Number, Letter Upper register.
         /// </summary>
@@ -11,22 +84,22 @@ namespace PasswordGenerator
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
-            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
-            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
 
             // Цикл количества паролей
-            for (int b = 1; b <= QuantityPassword; b++)
+            for (int b = 1; b <= quantityPassword; b++)
             {
                 // Основная логика генерации пароля (FullPassword)
-                for (int i = 0; i < QuantitySymbols; i++)
+                for (int i = 0; i < quantitySymbols; i++)
                 {
                     // Рандомная генерация символов по таблице ASCII в диапазоне Next
                     char valueS = (char)RandomPassword.Next(48, 90);
@@ -69,7 +142,7 @@ namespace PasswordGenerator
                 p++;
 
                 Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
-                Console.Write($"\nPasswordTest {p}: ");
+                Console.Write($"\nPassword {p}: ");
                 Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
 
                 // Вывод пароля и перебор
@@ -91,22 +164,22 @@ namespace PasswordGenerator
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
-            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
-            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
 
             // Цикл количества паролей
-            for (int b = 1; b <= QuantityPassword; b++)
+            for (int b = 1; b <= quantityPassword; b++)
             {
                 // Основная логика генерации пароля (FullPassword)
-                for (int i = 0; i < QuantitySymbols; i++)
+                for (int i = 0; i < quantitySymbols; i++)
                 {
                     // Рандомная генерация символов по таблице ASCII в диапазоне 33 - 125
                     char valueS = (char)RandomPassword.Next(48, 122);
@@ -149,7 +222,7 @@ namespace PasswordGenerator
                 p++;
 
                 Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
-                Console.Write($"\nPasswordTest {p}: ");
+                Console.Write($"\nPassword {p}: ");
                 Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
 
                 // Вывод пароля и перебор
@@ -171,22 +244,22 @@ namespace PasswordGenerator
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
-            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
-            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
 
             // Цикл количества паролей
-            for (int b = 1; b <= QuantityPassword; b++)
+            for (int b = 1; b <= quantityPassword; b++)
             {
                 // Основная логика генерации пароля (FullPassword)
-                for (int i = 0; i < QuantitySymbols; i++)
+                for (int i = 0; i < quantitySymbols; i++)
                 {
                     // Рандомная генерация символов по таблице ASCII в диапазоне Next
                     char valueS = (char)RandomPassword.Next(91, 125);
@@ -227,7 +300,7 @@ namespace PasswordGenerator
                 p++;
 
                 Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
-                Console.Write($"\nPasswordTest {p}: ");
+                Console.Write($"\nPassword {p}: ");
                 Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
 
                 // Вывод пароля и перебор
@@ -249,22 +322,22 @@ namespace PasswordGenerator
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
-            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
-            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
 
             // Цикл количества паролей
-            for (int b = 1; b <= QuantityPassword; b++)
+            for (int b = 1; b <= quantityPassword; b++)
             {
                 // Основная логика генерации пароля (FullPassword)
-                for (int i = 0; i < QuantitySymbols; i++)
+                for (int i = 0; i < quantitySymbols; i++)
                 {
                     // Рандомная генерация символов по таблице ASCII в диапазоне Next
                     char valueS = (char)RandomPassword.Next(65, 122);
@@ -305,7 +378,7 @@ namespace PasswordGenerator
                 p++;
 
                 Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
-                Console.Write($"\nPasswordTest {p}: ");
+                Console.Write($"\nPassword {p}: ");
                 Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
 
                 // Вывод пароля и перебор
@@ -327,22 +400,22 @@ namespace PasswordGenerator
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
-            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
-            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
 
             // Цикл количества паролей
-            for (int b = 1; b <= QuantityPassword; b++)
+            for (int b = 1; b <= quantityPassword; b++)
             {
                 // Основная логика генерации пароля (FullPassword)
-                for (int i = 0; i < QuantitySymbols; i++)
+                for (int i = 0; i < quantitySymbols; i++)
                 {
                     // Рандомная генерация символов по таблице ASCII в диапазоне Next
                     char valueS = (char)RandomPassword.Next(65, 90);
@@ -353,7 +426,7 @@ namespace PasswordGenerator
                 p++;
 
                 Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
-                Console.Write($"\nPasswordTest {p}: ");
+                Console.Write($"\nPassword {p}: ");
                 Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
 
                 // Вывод пароля и перебор
@@ -375,22 +448,22 @@ namespace PasswordGenerator
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
-            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
-            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
 
             // Цикл количества паролей
-            for (int b = 1; b <= QuantityPassword; b++)
+            for (int b = 1; b <= quantityPassword; b++)
             {
                 // Основная логика генерации пароля (FullPassword)
-                for (int i = 0; i < QuantitySymbols; i++)
+                for (int i = 0; i < quantitySymbols; i++)
                 {
                     // Рандомная генерация символов по таблице ASCII в диапазоне Next
                     char valueS = (char)RandomPassword.Next(97, 122);
@@ -401,7 +474,7 @@ namespace PasswordGenerator
                 p++;
 
                 Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
-                Console.Write($"\nPasswordTest {p}: ");
+                Console.Write($"\nPassword {p}: ");
                 Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
 
                 // Вывод пароля и перебор
@@ -423,22 +496,22 @@ namespace PasswordGenerator
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
-            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
-            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
 
             // Цикл количества паролей
-            for (int b = 1; b <= QuantityPassword; b++)
+            for (int b = 1; b <= quantityPassword; b++)
             {
                 // Основная логика генерации пароля (FullPassword)
-                for (int i = 0; i < QuantitySymbols; i++)
+                for (int i = 0; i < quantitySymbols; i++)
                 {
                     // Рандомная генерация символов по таблице ASCII в диапазоне Next
                     char valueS = (char)RandomPassword.Next(48, 57);
@@ -449,7 +522,7 @@ namespace PasswordGenerator
                 p++;
 
                 Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
-                Console.Write($"\nPasswordTest {p}: ");
+                Console.Write($"\nPassword {p}: ");
                 Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
 
                 // Вывод пароля и перебор
@@ -471,22 +544,22 @@ namespace PasswordGenerator
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
-            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
-            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
 
             // Цикл количества паролей
-            for (int b = 1; b <= QuantityPassword; b++)
+            for (int b = 1; b <= quantityPassword; b++)
             {
                 // Основная логика генерации пароля (FullPassword)
-                for (int i = 0; i < QuantitySymbols; i++)
+                for (int i = 0; i < quantitySymbols; i++)
                 {
                     // Рандомная генерация символов по таблице ASCII в диапазоне Next
                     char valueS = (char)RandomPassword.Next(33, 96);
@@ -509,7 +582,7 @@ namespace PasswordGenerator
                 p++;
 
                 Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
-                Console.Write($"\nPasswordTest {p}: ");
+                Console.Write($"\nPassword {p}: ");
                 Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
 
                 // Вывод пароля и перебор
@@ -531,22 +604,22 @@ namespace PasswordGenerator
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
-            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
-            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
 
             // Цикл количества паролей
-            for (int b = 1; b <= QuantityPassword; b++)
+            for (int b = 1; b <= quantityPassword; b++)
             {
                 // Основная логика генерации пароля (FullPassword)
-                for (int i = 0; i < QuantitySymbols; i++)
+                for (int i = 0; i < quantitySymbols; i++)
                 {
                     // Рандомная генерация символов по таблице ASCII в диапазоне Next
                     char valueS = (char)RandomPassword.Next(33, 125);
@@ -569,7 +642,7 @@ namespace PasswordGenerator
                 p++;
 
                 Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
-                Console.Write($"\nPasswordTest {p}: ");
+                Console.Write($"\nPassword {p}: ");
                 Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
 
                 // Вывод пароля и перебор
@@ -591,22 +664,22 @@ namespace PasswordGenerator
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
-            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
-            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
 
             // Цикл количества паролей
-            for (int b = 1; b <= QuantityPassword; b++)
+            for (int b = 1; b <= quantityPassword; b++)
             {
                 // Основная логика генерации пароля (FullPassword)
-                for (int i = 0; i < QuantitySymbols; i++)
+                for (int i = 0; i < quantitySymbols; i++)
                 {
                     // Рандомная генерация символов по таблице ASCII в диапазоне Next
                     char valueS = (char)RandomPassword.Next(33, 64);
@@ -651,22 +724,22 @@ namespace PasswordGenerator
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
-            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
-            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
 
             // Цикл количества паролей
-            for (int b = 1; b <= QuantityPassword; b++)
+            for (int b = 1; b <= quantityPassword; b++)
             {
                 // Основная логика генерации пароля (FullPassword)
-                for (int i = 0; i < QuantitySymbols; i++)
+                for (int i = 0; i < quantitySymbols; i++)
                 {
                     // Рандомная генерация символов по таблице ASCII в диапазоне Next
                     char valueS = (char)RandomPassword.Next(33, 125);
@@ -699,7 +772,7 @@ namespace PasswordGenerator
                 p++;
 
                 Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
-                Console.Write($"\nPasswordTest {p}: ");
+                Console.Write($"\nPassword {p}: ");
                 Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
 
                 // Вывод пароля и перебор
@@ -721,22 +794,22 @@ namespace PasswordGenerator
         {
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
-            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
-            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             // Переменная для номера пароля
             int p = 0;
 
             // Цикл количества паролей
-            for (int b = 1; b <= QuantityPassword; b++)
+            for (int b = 1; b <= quantityPassword; b++)
             {
                 // Основная логика генерации пароля (FullPassword)
-                for (int i = 0; i < QuantitySymbols; i++)
+                for (int i = 0; i < quantitySymbols; i++)
                 {
                     // Рандомная генерация символов по таблице ASCII в диапазоне Next
                     char valueS = (char)RandomPassword.Next(33, 125);
@@ -769,7 +842,7 @@ namespace PasswordGenerator
                 p++;
 
                 Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
-                Console.Write($"\nPasswordTest {p}: ");
+                Console.Write($"\nPassword {p}: ");
                 Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
 
                 // Вывод пароля и перебор
@@ -793,22 +866,22 @@ namespace PasswordGenerator
             
             Console.WriteLine("Сколько паролей");
             // конвертация string в int
-            int QuantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantityPassword = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
 
             Console.WriteLine("Сколько символов в пароле");
             // конвертация string в int
-            int QuantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
+            int quantitySymbols = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
             
             // Переменная для номера пароля
             int p = 0;
 
             // Цикл количества паролей
-            for (int b = 1; b <= QuantityPassword; b++)
+            for (int b = 1; b <= quantityPassword; b++)
             {
                 // Основная логика генерации пароля (FullPassword)
-                for (int i = 0; i < QuantitySymbols; i++)
+                for (int i = 0; i < quantitySymbols; i++)
                 {
                     // Regex - замена символов
                     const string versus = @"\w";
@@ -838,7 +911,7 @@ namespace PasswordGenerator
                 p++;
 
                 Console.ForegroundColor = ConsoleColor.Magenta; // Изменяет цвет текста в консоли на Magenta
-                Console.Write($"\nPasswordTest {p}: ");
+                Console.Write($"\nPassword {p}: ");
                 Console.ResetColor(); // Изменяет цвет текста в коноли на стандартный
 
                 // Вывод пароля и перебор
