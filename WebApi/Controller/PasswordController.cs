@@ -1,4 +1,5 @@
 using Core;
+using Core.Abstractions;
 using Core.Strategies;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +10,17 @@ namespace WebApi.Controller;
 public class PasswordController : ControllerBase
 {
     [HttpGet("generate")]
-    public async Task<IActionResult> Generate(int length, bool useUppercase = true, bool useNumbers = true, bool useSymbols = true)
+    public async Task<IActionResult> Generate(string strategyType, int length, bool useUppercase = true, bool useNumbers = true, bool useSymbols = true)
     {
+        IPasswordStrategy strategy = strategyType.ToLower() switch
+        {
+            "numeric" => new NumericOnlyPasswordStrategy(),
+            "symbols" => new SymbolsOnlyPasswordStrategy(),
+            _ => new AlphanumericPasswordStrategy()
+        };
+
         var generator = new PasswordGenerator();
-        generator.SetStrategy(new AlphanumericPasswordStrategy());
+        generator.SetStrategy(strategy);
         string password = await generator.GenerateAsync(length, useUppercase, useNumbers, useSymbols);
         return Ok(password);
     }
